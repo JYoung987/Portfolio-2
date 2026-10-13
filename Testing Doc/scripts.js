@@ -1,8 +1,8 @@
 const CHANNELS = [
-  { id: "mii", subtitle: "About Me", channelId: "mii.html", media: {"type": "video", "src": "Media/miichannel.mp4"} },
-  { id: "disc", subtitle: "Projects", channelId: "disc.html", media: {"type": "video", "src": "Media/EmptyDiscChannel.mp4"} },
+  { id: "mii", subtitle: "About Me", channelId: "mii.html", media: {type: "video", src: "Media/miichannel.mp4"} },
+  { id: "disc", subtitle: "Projects", channelId: "disc.html", media: {type: "video", src: "Media/EmptyDiscChannel.mp4"} },
   { id: "shop", subtitle: "Extras & experiments", channelId: "shop.html", media: null },
-  { id: "about", subtitle: "This portfolio", channelId: "about.html", media: null },
+  { id: "about", subtitle: "This portfolio", channelId: "about.html", media: {type: "image", src:"Images/Wii-information-channel.png"} },
   { id: "cv", subtitle: "Resume", channelId: "cv.html", media: null },
   { id: "youtube", subtitle: "Videos & demos", channelId: "videos.html", media: null },
   { id: "photos", subtitle: "Project gallery", channelId: "photos.html", media: null }
@@ -90,25 +90,3 @@ function showTime() {
   setTimeout(showTime, 1000);
 }
 showTime();
-
-/* Disc Rotation Function */
-
-const imagecontainer = document.querySelector('.disc-scene');
-const prevBtn = document.getElementById('previous');
-const nextBtn = document.getElementById('next');
-
-let x = 0;
-
-prevBtn.addEventListener('click', () => {
-  x = x + 45
-  rotate();
-});
-
-nextBtn.addEventListener('click', () => {
-  x = x - 45
-  rotate();
-});
-
-function rotate() {
-  imagecontainer.style.transform = 'perspective(1000px) rotateY(${x}deg)';
-}

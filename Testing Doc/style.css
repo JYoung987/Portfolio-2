@@ -173,6 +173,88 @@ body {
   background: transparent;
 }
 
+@keyframes bAnim-l {
+  0%, 100% { 
+    transform: translateX(0); 
+    background-image: url("Images/Arrows/top_L_arrow_00.png");
+  }
+
+  12.5%{
+    background-image:url("Images/Arrows/top_L_arrow_01.png");
+  }
+
+  25%{
+    background-image: url("Images/Arrows/top_L_arrow_02.png");
+  }
+
+  37.5%{
+    background-image: url("Images/Arrows/top_L_arrow_03.png");
+  }
+  
+  50% {
+    transform: translateX(30px);
+    background-image:url("Images/Arrows/top_L_arrow_04.png");
+  }
+}
+
+@keyframes bAnim-r {
+    0%, 100% {
+        transform: translateX(0);
+        background-image: url("/images/Arrows/top_R_arrow_00.png");
+    }
+
+    12.5% {
+        background-image: url("/images/Arrows/top_R_arrow_01.png");
+    }
+
+    25%{
+      background-image: url("Images/Arrows/top_R_arrow_02.png");
+    }
+
+    37.5% {
+        background-image: url("/images/Arrows/top_R_arrow_03.png");
+    }
+
+    50% {
+        transform: translateX(-30px);
+        background-image: url("/images/Arrows/top_R_arrow_04.png");
+    }
+}
+
+.l-arrow-btn {
+    width: 4%;
+    aspect-ratio: 1;
+    position: fixed;
+    left: 3%;
+    cursor: pointer;
+
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    animation: bAnim-l 2s ease-in-out 0.1s infinite;
+}
+
+.r-arrow-btn {
+    width: 4%;
+    aspect-ratio: 1;
+    position: fixed;
+    right: 3%;
+    cursor: pointer;
+
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    animation: bAnim-r 2s ease-in-out 0.1s infinite;
+}
+
 
 /*bottom ui*/
 .bottom-ui {
@@ -249,39 +331,35 @@ body {
 }
 
 .disc-scene {
-  position: relative;
   width: 100%;
+}
+
+.disc-container {
+  position: relative;
+  margin-left: 10%;
+  width: 90%;
   height: 60vh;
 }
 
-.disc-scene span {
+.disc-container img {
   position: absolute;
   top: 50%;
-  left: 0;
-  width: min(30vw, 45vh);
-  aspect-ratio: 1;
+  left: 20px;
+  width: 25%;
+  transition: transform 0.5s ease;
   cursor: pointer;
-  transform: translate(calc(var(--x) - 50%), -50%) scale(var(--s));
-  transition: transform 0.7s ease, opacity 0.7s ease;
 }
 
-.disc-scene span img {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-}
 
-.disc-scene span[data-pos="1"] { --x: 22vw; --s: 1;    z-index: 3; cursor: default; }
-.disc-scene span[data-pos="2"] { --x: 56vw; --s: 0.55; z-index: 2; }
-.disc-scene span[data-pos="3"] { --x: 80vw; --s: 0.55; z-index: 1; }
-
-
-.disc-scene span.fading { opacity: 0; }
+.disc-item-1 { transform: translate(0%,   -50%) scale(1);   z-index: 4; }
+.disc-item-2 { transform: translate(85%,  -50%) scale(0.6); z-index: 3; }
+.disc-item-3 { transform: translate(155%, -50%) scale(0.6); z-index: 2; }
+.disc-item-4 { transform: translate(225%, -50%) scale(0.6); z-index: 1; }
 
 .MainMenubtn {
   position: fixed;
-  left: 28%;
+  left: 23%;
+  width: 25%;
   bottom: 2.5%;
   height: auto;
   cursor: pointer;
@@ -289,9 +367,9 @@ body {
 
 .Startbtn {
   position: fixed;
-  right: 28%;
+  right: 23%;
   bottom: 2.5%;
-  width: 20%;
+  width: 25%;
   height: auto;
   cursor: pointer;
 }
