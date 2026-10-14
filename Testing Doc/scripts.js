@@ -1,11 +1,11 @@
 const CHANNELS = [
+  { id: "disc", subtitle: "My Projects", channelId: "disc.html", media: {type: "video", src: "Media/EmptyDiscChannel.mp4"} },
   { id: "mii", subtitle: "About Me", channelId: "mii.html", media: {type: "video", src: "Media/miichannel.mp4"} },
-  { id: "disc", subtitle: "Projects", channelId: "disc.html", media: {type: "video", src: "Media/EmptyDiscChannel.mp4"} },
-  { id: "shop", subtitle: "Extras & experiments", channelId: "shop.html", media: null },
-  { id: "about", subtitle: "This portfolio", channelId: "about.html", media: {type: "image", src:"Images/Wii-information-channel.png"} },
-  { id: "cv", subtitle: "Resume", channelId: "cv.html", media: null },
-  { id: "youtube", subtitle: "Videos & demos", channelId: "videos.html", media: null },
-  { id: "photos", subtitle: "Project gallery", channelId: "photos.html", media: null }
+  { id: "photos", subtitle: "Project gallery", channelId: "photos.html", media: {type: "video", src: "Media/photochannelhd.mp4"} },
+  { id: "shop", subtitle: "Shop", channelId: "shop.html", media: {type: "video", src: "Media/shopchannel.mp4"} },
+  { id: "github", subtitle: "Github Portfolio", channelId: "about.html", media: {type: "image", src:"Images/github.png"} },
+  { id: "cv", subtitle: "My CV", channelId: "cv.html", media: null },
+  { id: "youtube", subtitle: "Videos & demos", channelId: "videos.html", media: {type: "video", src:"Media/youtube.mp4"} },
 ];
 
 const channelsContainer = document.getElementById("channels");
@@ -59,9 +59,6 @@ for (let i = 0; i < blanksNeeded; i++) {
 
 const channels = document.querySelectorAll('.channel');
 const view = document.getElementById('channelView');
-const label = document.getElementById('channelLabel');
-const mailBtn = document.getElementById('mailBtn');
-const wiiBtn = document.getElementById('wiiBtn');
 
 channels.forEach(tile => {
   tile.addEventListener('click', () => {
@@ -71,6 +68,26 @@ channels.forEach(tile => {
     if (!channelData) return;
 
     window.location.href = `channels/${channelData.channelId}`;
+  });
+});
+
+const tooltip = document.getElementById("tooltip");
+
+channels.forEach(tile => {
+  const data = CHANNELS.find(c => c.id === tile.dataset.channel);
+  if (!data) return;
+
+  tile.addEventListener('mouseenter', () => {
+    tooltip.textContent = data.subtitle;
+    tooltip.classList.add('visible');
+  });
+
+  tile.addEventListener('mousemove', e => {
+    tooltip.style.transform = `translate(${e.clientX }px, ${e.clientY + 50}px)`;
+  });
+
+  tile.addEventListener('mouseleave', () => {
+    tooltip.classList.remove('visible');
   });
 });
 

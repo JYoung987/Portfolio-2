@@ -106,6 +106,26 @@ body {
   transform: scale(1.03);
 }
 
+.tooltip {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0.4rem 0.9rem;
+  border-radius: 10px;
+  background: white;
+  border: 2px solid #37bef0;
+  color: #37bef0;
+  font-weight: bold;
+  white-space: nowrap;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  z-index: 1000;
+}
+
+.tooltip.visible {
+  opacity: 1;
+}
+
 .channel-view.active {
   display: block;
   animation: zoomIn 1s ease-in-out forwards;
@@ -179,15 +199,15 @@ body {
     background-image: url("Images/Arrows/top_L_arrow_00.png");
   }
 
-  12.5%{
+  12.5%, 87.5% {
     background-image:url("Images/Arrows/top_L_arrow_01.png");
   }
 
-  25%{
+  25%, 75% {
     background-image: url("Images/Arrows/top_L_arrow_02.png");
   }
 
-  37.5%{
+  37.5%, 62.5% {
     background-image: url("Images/Arrows/top_L_arrow_03.png");
   }
   
@@ -203,15 +223,15 @@ body {
         background-image: url("/images/Arrows/top_R_arrow_00.png");
     }
 
-    12.5% {
+    12.5%, 87.5% {
         background-image: url("/images/Arrows/top_R_arrow_01.png");
     }
 
-    25%{
+    25%, 75% {
       background-image: url("Images/Arrows/top_R_arrow_02.png");
     }
 
-    37.5% {
+    37.5%, 62.5% {
         background-image: url("/images/Arrows/top_R_arrow_03.png");
     }
 
