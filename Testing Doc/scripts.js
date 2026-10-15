@@ -27,6 +27,7 @@ CHANNELS.forEach(channel => {
     video.autoplay = true;
     video.loop = true;
     video.muted = true;
+    video.disablePictureInPicture = true;
     video.playsInline = true;
     video.className = "channel-video-bg";
     tile.appendChild(video);
