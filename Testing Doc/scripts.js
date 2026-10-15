@@ -49,6 +49,7 @@ for (let i = 0; i < blanksNeeded; i++) {
   video.src = "Media/BlankChannel.mp4";
   video.loop = true;
   video.muted = true;
+  video.disablePictureInPicture = true;
   video.playsInline = true;
   video.autoplay = true;
   video.className = "channel-video-bg";

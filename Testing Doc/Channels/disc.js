@@ -1,6 +1,17 @@
 /* Disc Rotation Function */
 
+const DISCS = [
+  {id: "Disc-1", subtitle: "Asylum", link: "https://y3036816.wixsite.com/echos-in-the-asylum", image: "/Images/Disc-1.png"},
+  {id: "Disc-2", subtitle: "GymBrosAR", link: "https://y3036816.wixsite.com/ar-app-showcase", image: "/Images/Disc-2.png"},
+  {id: "Disc-3", subtitle: "2D Platformer", link: "https://y3036816.wixsite.com/portfolio", image: "/Images/Disc-3.png"},
+  {id: "Disc-4", subtitle: "Blank Disc", Link: null, image: null}
+]
+
 const discContainer = document.querySelector('.disc-container');
+
+DISCS.forEach(disc =>{
+  const tile = document.createElement("div");
+})
 
 class Carousel {
   constructor(container, items) {
