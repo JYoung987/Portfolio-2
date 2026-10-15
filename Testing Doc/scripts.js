@@ -83,11 +83,11 @@ channels.forEach(tile => {
   });
 
   tile.addEventListener('mousemove', e => {
-    tooltip.style.transform = `translate(${e.clientX }px, ${e.clientY + 50}px)`;
+    tooltip.style.transform = `translate(${e.clientX }px, ${e.clientY + 25 }px)`;
   });
 
   tile.addEventListener('mouseleave', () => {
-    tooltip.classList.remove('visible');
+    tooltip.classList.remove('visible');  
   });
 });
 

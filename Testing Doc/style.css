@@ -1,3 +1,7 @@
+/* ==================================================
+   1. RESET & BASE STYLES
+   ================================================== */
+
 html,
 body,
 div,
@@ -32,190 +36,314 @@ footer,
 header,
 nav,
 section {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  font-size: 100%;
-  vertical-align: baseline;
-  background: transparent;
-  box-sizing: border-box
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-size: 100%;
+    vertical-align: baseline;
+    background: transparent;
+    box-sizing: border-box;
 }
 
 body {
-  margin-top: -60px;
-  font-family: "Continuum Light";
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    margin-top: -60px;
+    font-family: "Continuum Light";
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.MainBG{
+
+/* ==================================================
+   2. MAIN MENU BACKGROUND
+   ================================================== */
+
+.MainBG {
     background: repeating-linear-gradient(
-    360deg,
-    #e5e5e5,
-    #e5e5e5 0.25svh,
-    #f5f5f5 0.5svh,
-    #f5f5f5 0.5svh
-  );
+        360deg,
+        #e5e5e5,
+        #e5e5e5 0.25svh,
+        #f5f5f5 0.5svh,
+        #f5f5f5 0.5svh
+    );
 }
 
-/*channels */
+
+/* ==================================================
+   3. CHANNEL GRID & CHANNEL TILES
+   ================================================== */
+
 .channels {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, 1fr);
-  gap: 8px;
-  width: 60rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 8px;
+    width: 60rem;
 }
 
 .channel {
-  position: relative;
-  overflow: hidden;
-  width: min(30vw, 14rem);
-  aspect-ratio: 16 / 9;
-  border-radius: 24px / 14px;
-  background: white;
-  border: 2px solid #ccc;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
-  transition: transform 0.15s ease;
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  cursor: pointer;
-}
+    position: relative;
+    overflow: hidden;
+    width: min(30vw, 14rem);
+    aspect-ratio: 16 / 9;
 
-.channel-video-bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 0;
-}
+    display: grid;
+    align-items: center;
+    justify-content: center;
 
-.channel-title{
-  position:relative;
-  z-index: 1;
+    background: white;
+    border: 2px solid #ccc;
+    border-radius: 24px / 14px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.15);
+
+    font-weight: bold;
+    cursor: pointer;
+
+    transition: transform 0.15s ease;
 }
 
 .channel:hover {
-  border-color: #00a5e0;
-  transform: scale(1.03);
+    border-color: #00a5e0;
+    transform: scale(1.03);
 }
 
+/* Background video inside a channel */
+
+.channel-video-bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+/* Keeps the channel title above its background */
+
+.channel-title {
+    position: relative;
+    z-index: 1;
+}
+
+
+/* ==================================================
+   4. CHANNEL TOOLTIP
+   ================================================== */
+
 .tooltip {
-  position: fixed;
-  top: 0;
-  left: 0;
-  padding: 0.4rem 0.9rem;
-  border-radius: 10px;
-  background: white;
-  border: 2px solid #37bef0;
-  color: #37bef0;
-  font-weight: bold;
-  white-space: nowrap;
-  pointer-events: none;
-  transition: opacity 0.15s ease;
-  z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+
+    padding: 0.4rem 0.9rem;
+
+    background: white;
+    border: 2px solid #37bef0;
+    border-radius: 10px;
+    color: #37bef0;
+
+    font-weight: bold;
+    white-space: nowrap;
+
+    pointer-events: none;
+    transition: opacity 0.15s ease;
 }
 
 .tooltip.visible {
-  opacity: 1;
+    opacity: 1;
 }
 
+
+/* ==================================================
+   5. CHANNEL VIEW & TRANSITIONS
+   ================================================== */
+
 .channel-view.active {
-  display: block;
-  animation: zoomIn 1s ease-in-out forwards;
-  overflow-y: auto;
+    display: block;
+    overflow-y: auto;
+    animation: zoomIn 1s ease-in-out forwards;
 }
 
 .channel-view-content {
-  max-width: 50rem;
-  margin: 4rem auto;
-  padding: 0 2rem;
-}
-
-.clockwrapper {
-  position: absolute;
-  width: 100%;
-  bottom: 3vh;
-  z-index: 4;
-  display: flex;
-  justify-content: center;
-  color: rgb(180, 180, 180);
-  font-family: 'Cursed Timer ULiL', sans-serif;
-  font-size: 75px;
-  letter-spacing: 3px;
-}
-
-/*animations*/
-@keyframes zoomIn {
-  from { transform: scale(0.2); opacity: 1; }
-  to { transform: scale(1); opacity: 1; }
+    max-width: 50rem;
+    margin: 4rem auto;
+    padding: 0 2rem;
 }
 
 .back-btn {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  padding: 0.5rem 1rem;
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.5rem 1rem;
 }
 
-#bottom {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1;
+
+/* ==================================================
+   6. CLOCK
+   ================================================== */
+
+.clockwrapper {
+    position: fixed;
+    bottom: 3vh;
+    z-index: 4;
+
+    display: flex;
+    justify-content: center;
+
+    width: 100%;
+
+    color: rgb(180, 180, 180);
+    font-family: "Cursed Timer ULiL", sans-serif;
+    font-size: 75px;
+    letter-spacing: 3px;
+}
+
+
+/* ==================================================
+   7. BOTTOM UI & FOOTER
+   ================================================== */
+
+#bottom,
+.bottom-ui {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
 }
 
 .bottom-img {
-  width: 100%;
-  display: block;
+    display: block;
+    width: 100%;
+    height: 300px;
 }
 
-.wii-btn {
-  border: none;
-  padding: 0;
-  height: auto;
-  margin: 0;
-  background: transparent;
+.footerBG {
+    width: 100%;
+    height: 200px;
+
+    background: repeating-linear-gradient(
+        360deg,
+        #e5e5e5,
+        #e5e5e5 0.5svh,
+        #f5f5f5 1svh,
+        #f5f5f5 1svh
+    );
+
+    border-top: 8px solid #ccc;
 }
 
+.name-text {
+    position: absolute;
+    bottom: 24.5vh;
+    left: 50%;
+    transform: translateX(-50%);
+
+    height: 55px;
+
+    font-family: "Continuum Light";
+    font-size: 75px;
+    font-weight: bolder;
+    color: #37bef0;
+}
+
+/* ==================================================
+   8. BOTTOM BUTTONS & BUTTON IMAGES
+   ================================================== */
+
+/* Shared button appearance */
+
+.wii-btn,
 .mail-btn {
-  border: none;
-  padding: 0;
-  height: auto;
-  margin: 0;
-  background: transparent;
+    height: auto;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    z-index: 2;
+
+    border: none;
+    background: transparent;
+
+    cursor: pointer;
 }
+
+/* Left button */
+
+#left {
+    position: fixed;
+    bottom: 15px;
+    left: 0;
+    z-index: 2;
+}
+
+/* Right button */
+
+#right {
+    position: fixed;
+    bottom: 15px;
+    right: 0;
+    z-index: 2;
+}
+
+/* Main Menu and Start buttons */
+
+.MainMenubtn {
+    position: fixed;
+    left: 23%;
+    bottom: 2.5%;
+
+    width: 25%;
+    height: auto;
+
+    cursor: pointer;
+}
+
+.Startbtn {
+    position: fixed;
+    right: 23%;
+    bottom: 2.5%;
+
+    width: 25%;
+    height: auto;
+
+    cursor: pointer;
+}
+
+
+/* ==================================================
+   9. LEFT ARROW ANIMATION
+   ================================================== */
 
 @keyframes bAnim-l {
-  0%, 100% { 
-    transform: translateX(0); 
-    background-image: url("Images/Arrows/top_L_arrow_00.png");
-  }
+    0%, 100% {
+        transform: translateX(0);
+        background-image: url("/images/Arrows/top_L_arrow_00.png");
+    }
 
-  12.5%, 87.5% {
-    background-image:url("Images/Arrows/top_L_arrow_01.png");
-  }
+    12.5%, 87.5% {
+        background-image: url("/images/Arrows/top_L_arrow_01.png");
+    }
 
-  25%, 75% {
-    background-image: url("Images/Arrows/top_L_arrow_02.png");
-  }
+    25%, 75% {
+        background-image: url("/images/Arrows/top_L_arrow_02.png");
+    }
 
-  37.5%, 62.5% {
-    background-image: url("Images/Arrows/top_L_arrow_03.png");
-  }
-  
-  50% {
-    transform: translateX(30px);
-    background-image:url("Images/Arrows/top_L_arrow_04.png");
-  }
+    37.5%, 62.5% {
+        background-image: url("/images/Arrows/top_L_arrow_03.png");
+    }
+
+    50% {
+        transform: translateX(30px);
+        background-image: url("/images/Arrows/top_L_arrow_04.png");
+    }
 }
+
+
+/* ==================================================
+   10. RIGHT ARROW ANIMATION
+   ================================================== */
 
 @keyframes bAnim-r {
     0%, 100% {
@@ -228,7 +356,7 @@ body {
     }
 
     25%, 75% {
-      background-image: url("Images/Arrows/top_R_arrow_02.png");
+        background-image: url("/images/Arrows/top_R_arrow_02.png");
     }
 
     37.5%, 62.5% {
@@ -241,155 +369,195 @@ body {
     }
 }
 
-.l-arrow-btn {
+
+/* Shared arrow button styling */
+
+.l-arrow-btn,
+.r-arrow-btn {
+    position: fixed;
+    z-index: 2;
+
     width: 4%;
     aspect-ratio: 1;
-    position: fixed;
-    left: 3%;
-    cursor: pointer;
 
     padding: 0;
     border: none;
     background-color: transparent;
+
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
 
+    cursor: pointer;
+}
+
+/* Individual positions and animations */
+
+.l-arrow-btn {
+    left: 3%;
     animation: bAnim-l 2s ease-in-out 0.1s infinite;
 }
 
 .r-arrow-btn {
-    width: 4%;
-    aspect-ratio: 1;
-    position: fixed;
     right: 3%;
-    cursor: pointer;
-
-    padding: 0;
-    border: none;
-    background-color: transparent;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-
     animation: bAnim-r 2s ease-in-out 0.1s infinite;
 }
 
 
-/*bottom ui*/
-.bottom-ui {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1;
-}
-.bottom-text {
-  position: absolute;
-  bottom: 0.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 0.8rem;
-  color: #666;
-}
+/* ==================================================
+   11. DISC CHANNEL
+   ================================================== */
 
-.name-text {
-  font-family: "Continuum Light";
-  position: absolute;
-  bottom: 24.5vh;
-  left: 50%;
-  transform: translateX(-50%);
-  color: #37bef0;
-  height: 55px;
-  font-size: 75px;
-  font-weight: bolder;
-}
-
-#left {
-  position: fixed;
-  bottom: 15px;
-  left: 0px;
-  z-index: 2;
-}
-
-.left-img {
-  width: 100%;
-  display: block;
-}
-
-#right {
-  position: fixed;
-  bottom: 15px;
-  right: 0px;
-  z-index: 2;
-}
-
-.right-img {
-  width: 100%;
-  display: block;
-}
-
-.footerBG{
-  height: 200px;
-  width: 100%;
-  background: repeating-linear-gradient(
-    360deg,
-    #e5e5e5,
-    #e5e5e5 0.5svh,
-    #f5f5f5 1svh,
-    #f5f5f5 1svh
-  );  
-  border-top: 8px solid #ccc;
-}
-/* Disc Channel Styles */
+/* Banner */
 
 .DiscChannelBanner {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 
+/* Disc layout */
+
 .disc-scene {
-  width: 100%;
+    width: 100%;
 }
 
 .disc-container {
-  position: relative;
-  margin-left: 10%;
-  width: 90%;
-  height: 60vh;
+    position: relative;
+    margin-left: 10%;
+    width: 90%;
+    height: 60vh;
 }
+
+/* Individual discs */
 
 .disc-container img {
-  position: absolute;
-  top: 50%;
-  left: 20px;
-  width: 25%;
-  transition: transform 0.5s ease;
-  cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+
+    width: 25%;
+
+    cursor: pointer;
+    transition: transform 0.5s ease;
+}
+
+.disc-item-1 {
+    transform: translate(0%, -50%) scale(1);
+    z-index: 4;
+}
+
+.disc-item-2 {
+    transform: translate(85%, -50%) scale(0.6);
+    z-index: 3;
+}
+
+.disc-item-3 {
+    transform: translate(155%, -50%) scale(0.6);
+    z-index: 2;
+}
+
+.disc-item-4 {
+    transform: translate(225%, -50%) scale(0.6);
+    z-index: 1;
 }
 
 
-.disc-item-1 { transform: translate(0%,   -50%) scale(1);   z-index: 4; }
-.disc-item-2 { transform: translate(85%,  -50%) scale(0.6); z-index: 3; }
-.disc-item-3 { transform: translate(155%, -50%) scale(0.6); z-index: 2; }
-.disc-item-4 { transform: translate(225%, -50%) scale(0.6); z-index: 1; }
+/* ==================================================
+   12. GENERAL ANIMATIONS
+   ================================================== */
 
-.MainMenubtn {
-  position: fixed;
-  left: 23%;
-  width: 25%;
-  bottom: 2.5%;
-  height: auto;
-  cursor: pointer;
+@keyframes zoomIn {
+    from {
+        transform: scale(0.2);
+        opacity: 1;
+    }
+
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
-.Startbtn {
-  position: fixed;
-  right: 23%;
-  bottom: 2.5%;
-  width: 25%;
-  height: auto;
-  cursor: pointer;
+
+/* ==================================================
+   13. RESPONSIVE STYLES
+   ================================================== */
+
+
+@media (max-width: 930px) {
+
+    /* Main menu layout */
+
+    body {
+        margin-top: -50px;
+    }
+
+    .channels {
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        gap: 0;
+    }
+
+    /* Bottom UI */
+
+    .bottom-ui {
+        z-index: 1;
+    }
+
+    .bottom-img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+    }
+
+    /* Navigation button containers */
+
+    #left,
+    #right {
+        position: fixed;
+        bottom: 2%;
+        z-index: 2;
+    }
+
+    #left {
+        left: 2%;
+    }
+
+    #right {
+        right: 2%;
+    }
+
+    .wii-btn,
+    .mail-btn {
+        padding: 0;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+    }
+
+    /* Navigation button images */
+
+    .wii-btn-img,
+    .mail-btn-img {
+        display: block;
+        width: 70px;
+        height: auto;
+        max-height: 80px;
+        object-fit: contain;
+    }
+
+    /* Name */
+
+    .name-text {
+        bottom: 70%;
+        font-size: 200%;
+    }
+
+    /* Clock */
+
+    .clockwrapper {
+        font-size: 250%;
+    }
 }
