@@ -2,7 +2,7 @@ const DISCS = [
   { id: "Disc-1", subtitle: "Asylum",        link: "https://y3036816.wixsite.com/echos-in-the-asylum", image: "/Images/Disc-1.png", audio:"/Audio/Disc-1-Theme.mp3" },
   { id: "Disc-2", subtitle: "GymBrosAR",     link: "https://y3036816.wixsite.com/ar-app-showcase",     image: "/Images/Disc-2.png", audio:"/Audio/Disc-2-Theme.mp3" },
   { id: "Disc-3", subtitle: "2D Platformer", link: "https://y3036816.wixsite.com/portfolio",           image: "/Images/Disc-3.png", audio:"/Audio/Disc-3-Theme.mp3" },
-  { id: "Disc-4", subtitle: "Blank Disc",    link: "index.html", image: "/Images/Disc-4.png", audio:"/Audio/Disc-4-Theme.mp3"}
+  { id: "Disc-4", subtitle: "Blank Disc",    link: null, image: "/Images/Disc-4.png", audio:"/Audio/Disc-4-Theme.mp3"}
 ];
 
 const discAudio = document.getElementById("discAudio");
@@ -70,4 +70,5 @@ const carousel = new Carousel(discContainer, discContainer.children);
 startBtn.addEventListener("click", () => {
   const data = DISCS.find(d => d.id === carousel.selected.dataset.disc);
   window.open(data.link, "_blank", "noopener");
+  if (!data) return;
 });
