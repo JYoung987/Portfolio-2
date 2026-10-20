@@ -120,6 +120,12 @@ body {
     z-index: 0;
 }
 
+.MiiChannelBG{
+    background-image: url("/Images/MiiChannelBG.png");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 80%;
+}
 /* Keeps the channel title above its background */
 
 .channel-title {

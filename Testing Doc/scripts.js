@@ -4,7 +4,7 @@ const CHANNELS = [
   { id: "photos", subtitle: "Project gallery", channelId: "photos.html", media: {type: "video", src: "Media/photochannelhd.mp4"} },
   { id: "shop", subtitle: "Shop", channelId: "shop.html", media: {type: "video", src: "Media/shopchannel.mp4"} },
   { id: "github", subtitle: "Github Portfolio", channelId: "about.html", media: {type: "image", src:"Images/github.png"} },
-  { id: "cv", subtitle: "My CV", channelId: "cv.html", media: null },
+  { id: "cv", subtitle: "My CV", channelId: "cv.html", media: {type: "image", src: "/Images/CV-Profile.png"} },
   { id: "youtube", subtitle: "Videos & demos", channelId: "videos.html", media: {type: "video", src:"Media/youtube.mp4"} },
 ];
 
@@ -16,7 +16,7 @@ CHANNELS.forEach(channel => {
   tile.dataset.channel = channel.id;
 
   if (channel.media?.type === "image") {
-    tile.style.backgroundImage = `url('${channel.media.src}')`;
+    tile.style.backgroundImage = `url("${channel.media.src}")`;
     tile.style.backgroundSize = "cover";
     tile.style.backgroundPosition = "center";
   }
@@ -59,11 +59,11 @@ for (let i = 0; i < blanksNeeded; i++) {
   channelsContainer.appendChild(blankTile);
 }
 
-const channels = document.querySelectorAll('.channel');
-const view = document.getElementById('channelView');
+const channels = document.querySelectorAll(".channel");
+const view = document.getElementById("channelView");
 
 channels.forEach(tile => {
-  tile.addEventListener('click', () => {
+  tile.addEventListener("click", () => {
     const channelId = tile.dataset.channel;
     const channelData = CHANNELS.find(c => c.id === channelId);
 
@@ -79,17 +79,17 @@ channels.forEach(tile => {
   const data = CHANNELS.find(c => c.id === tile.dataset.channel);
   if (!data) return;
 
-  tile.addEventListener('mouseenter', () => {
+  tile.addEventListener("mouseenter", () => {
     tooltip.textContent = data.subtitle;
-    tooltip.classList.add('visible');
+    tooltip.classList.add("visible");
   });
 
-  tile.addEventListener('mousemove', e => {
+  tile.addEventListener("mousemove", e => {
     tooltip.style.transform = `translate(${e.clientX }px, ${e.clientY + 25 }px)`;
   });
 
-  tile.addEventListener('mouseleave', () => {
-    tooltip.classList.remove('visible');  
+  tile.addEventListener("mouseleave", () => {
+    tooltip.classList.remove("visible");  
   });
 });
 
