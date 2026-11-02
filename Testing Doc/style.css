@@ -109,8 +109,6 @@ body {
     transform: scale(1.03);
 }
 
-/* Background video inside a channel */
-
 .channel-video-bg {
     position: absolute;
     inset: 0;
@@ -126,13 +124,11 @@ body {
     background-attachment: fixed;
     background-size: 100% 80%;
 }
-/* Keeps the channel title above its background */
 
 .channel-title {
     position: relative;
     z-index: 1;
 }
-
 
 /* ==================================================
    4. CHANNEL TOOLTIP
@@ -259,8 +255,6 @@ body {
    8. BOTTOM BUTTONS & BUTTON IMAGES
    ================================================== */
 
-/* Shared button appearance */
-
 .wii-btn,
 .mail-btn {
     height: auto;
@@ -275,8 +269,6 @@ body {
     cursor: pointer;
 }
 
-/* Left button */
-
 #left {
     position: fixed;
     bottom: 15px;
@@ -284,16 +276,12 @@ body {
     z-index: 2;
 }
 
-/* Right button */
-
 #right {
     position: fixed;
     bottom: 15px;
     right: 0;
     z-index: 2;
 }
-
-/* Main Menu and Start buttons */
 
 .MainMenubtn {
     position: fixed;
@@ -375,9 +363,6 @@ body {
     }
 }
 
-
-/* Shared arrow button styling */
-
 .l-arrow-btn,
 .r-arrow-btn {
     position: fixed;
@@ -397,8 +382,6 @@ body {
     cursor: pointer;
 }
 
-/* Individual positions and animations */
-
 .l-arrow-btn {
     left: 3%;
     animation: bAnim-l 2s ease-in-out 0.1s infinite;
@@ -414,16 +397,12 @@ body {
    11. DISC CHANNEL
    ================================================== */
 
-/* Banner */
-
 .DiscChannelBanner {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
 }
-
-/* Disc layout */
 
 .disc-scene {
     width: 100%;
@@ -435,8 +414,6 @@ body {
     width: 90%;
     height: 60vh;
 }
-
-/* Individual discs */
 
 .disc-container img {
     position: absolute;
@@ -469,7 +446,6 @@ body {
     z-index: 1;
 }
 
-
 /* ==================================================
    12. GENERAL ANIMATIONS
    ================================================== */
@@ -486,15 +462,11 @@ body {
     }
 }
 
-
 /* ==================================================
    13. RESPONSIVE STYLES
    ================================================== */
 
-
 @media (max-width: 930px) {
-
-    /* Main menu layout */
 
     body {
         margin-top: -50px;
@@ -506,8 +478,6 @@ body {
         gap: 0;
     }
 
-    /* Bottom UI */
-
     .bottom-ui {
         z-index: 1;
     }
@@ -517,8 +487,6 @@ body {
         height: 150px;
         object-fit: cover;
     }
-
-    /* Navigation button containers */
 
     #left,
     #right {
@@ -543,8 +511,6 @@ body {
         cursor: pointer;
     }
 
-    /* Navigation button images */
-
     .wii-btn-img,
     .mail-btn-img {
         display: block;
@@ -554,14 +520,10 @@ body {
         object-fit: contain;
     }
 
-    /* Name */
-
     .name-text {
         bottom: 70%;
         font-size: 200%;
     }
-
-    /* Clock */
 
     .clockwrapper {
         font-size: 250%;
