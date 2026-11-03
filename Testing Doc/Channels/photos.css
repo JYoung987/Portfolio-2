@@ -1,0 +1,143 @@
+.scene {
+  block-size: 100vb;
+  display: grid;
+  position: relative;
+  z-index: sibling-index();
+
+  view-timeline: --scene block;
+}
+
+.layer {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  place-items: center;
+
+  animation:
+    subtle-zoom linear both,
+    scene-in linear both,
+    scene-out linear both;
+  animation-timeline: --scene;
+  animation-range:
+    entry 50% exit 100%,
+    entry 50% entry 100%,
+    exit 50% exit 100%;
+
+  &:nth-child(2) {
+    z-index: 10;
+    animation-range:
+      entry 50% exit 120%,
+      entry 50% entry 100%,
+      exit 30% exit 100%;
+  }
+}
+
+@keyframes subtle-zoom {
+  from {
+    scale: 1.1;
+  }
+  to {
+    scale: 1;
+  }
+}
+
+@keyframes scene-in {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes scene-out {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.layer-image,
+.cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.scene::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: hsl(237, 31%, 13%);
+  opacity: 0;
+  pointer-events: none;
+  animation: scene-switch linear forwards;
+  animation-timeline: --scene;
+  animation-range: exit 0% exit 50%;
+}
+
+@keyframes scene-switch {
+  100% {
+    opacity: 0.9;
+  }
+}
+
+.gradient-text {
+  background-clip: text;
+  background-image: linear-gradient(var(--gradient-start), var(--gradient-end));
+
+  > * {
+    color: transparent;
+  }
+
+  animation: gradient-text linear both;
+  animation-timeline: view();
+}
+
+@keyframes gradient-text {
+  to {
+    --gradient-start: hsl(314, 60%, 65%);
+    --gradient-end: hsl(214, 67%, 80%);
+  }
+}
+
+.cover-image {
+  max-inline-size: 80%;
+  width: auto;
+  height: auto;
+}
+
+.logo-image {
+  inline-size: min(350px, 25%);
+}
+
+.panel {
+  position: relative;
+  z-index: 9999999999;
+  margin-top: auto;
+  display: grid;
+}
+
+.panel-grid {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.thumb {
+  border-radius: 1rem;
+}
+
+.scene > .panel {
+  margin-block-start: auto;
+}
+
+@property --gradient-start {
+  syntax: "<color>";
+  initial-value: hsl(340, 49%, 55%);
+  inherits: true;
+}
+
+@property --gradient-end {
+  syntax: "<color>";
+  initial-value: hsl(27, 93%, 78%);
+  inherits: true;
+}

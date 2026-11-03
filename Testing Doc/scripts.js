@@ -74,12 +74,16 @@ channels.forEach(tile => {
 });
 
 const tooltip = document.getElementById("tooltip");
+const hoverSound = document.getElementById("hover-sound");
 
 channels.forEach(tile => {
   const data = CHANNELS.find(c => c.id === tile.dataset.channel);
   if (!data) return;
 
   tile.addEventListener("mouseenter", () => {
+    hoverSound.currentTime = 0;
+    hoverSound.play();
+
     tooltip.textContent = data.subtitle;
     tooltip.classList.add("visible");
   });
