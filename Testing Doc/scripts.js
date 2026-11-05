@@ -6,6 +6,7 @@ const CHANNELS = [
   { id: "github", subtitle: "Github Portfolio", channelId: "about.html", media: {type: "image", src:"Images/github.png"} },
   { id: "cv", subtitle: "My CV", channelId: "cv.html", media: {type: "image", src: "/Images/CV-Profile.png"} },
   { id: "youtube", subtitle: "Videos & demos", channelId: "videos.html", media: {type: "video", src:"Media/youtube.mp4"} },
+  { id: "clicker", subtitle: "Clicker Game", channelId: "clicker.html", media: null }, 
 ];
 
 const channelsContainer = document.getElementById("channels");

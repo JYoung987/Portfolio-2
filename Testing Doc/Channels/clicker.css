@@ -1,0 +1,33 @@
+body{
+    display: grid;
+    place-items: center;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+.main{
+    display: flex;
+    gap: 200px;
+}
+
+.left h3{
+    font-size: 30px;
+    text-align: center;
+}
+
+.clicker-img{
+    width: 300px;
+}
+
+.clicker-img:hover{
+    transform: scale(1.1);
+    transition: 0.1s;
+    cursor: pointer;
+}
+
+.clicker-img:active{
+    opacity: 0.9;
+    transform: scale(1.05);
+    transition: 0.1s;
+}
