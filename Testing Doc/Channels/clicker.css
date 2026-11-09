@@ -4,20 +4,52 @@ body{
     margin: 0;
     padding: 0;
     user-select: none;
+    background: repeating-linear-gradient(
+        45deg,
+        #606dbc,
+        #606dbc 10px,
+        #465298 10px,
+        #465298 20px
+    );
+    background-size: 200% 200%
 }
 
+p{
+    color: white;
+}
 .main{
     display: flex;
-    gap: 200px;
+    align-items: center;
+    gap: 150px;
 }
 
 .left h3{
     font-size: 30px;
+    color: white;
     text-align: center;
+}
+
+.center-section h4{
+    color: white;
+    font-size: 20px;
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+.middle-section p{
+    color: white;
+    margin: 0;
 }
 
 .clicker-img{
     width: 300px;
+}
+
+.clicker-imgBG{
+    background: rgb(114, 69, 27);
+    border: solid 3px rgb(2, 2, 2);
+    border-radius: 15px;
+    padding: 10px;
 }
 
 .clicker-img:hover{
@@ -30,4 +62,49 @@ body{
     opacity: 0.9;
     transform: scale(1.05);
     transition: 0.1s;
+}
+
+.upgrade{
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: space-between;
+    width: 330px;
+    height: 60px;
+    border: solid 3px rgb(2, 2, 2);
+    background: rgb(114, 69, 27);
+    border-radius:5px;
+    padding: 5px;
+    position: relative;
+    cursor: pointer;
+}
+
+.upgrade:hover .level-info{
+    display: block;
+}
+
+.pointer-icon{
+    width: 60px;
+}
+
+.coin-icon{
+    width: 20px;
+    height: 20px;
+}
+
+.cost-info{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.level-info{
+    position: absolute;
+    width: 100px;
+    right: -32%;
+    background-color: rgb(114, 69, 27);
+    border: solid 3px black;
+    padding: 1px;
+    text-align: center;
+    display: none; 
 }
