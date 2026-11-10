@@ -4,6 +4,7 @@ body{
     margin: 0;
     padding: 0;
     user-select: none;
+    position: relative;
     background: repeating-linear-gradient(
         45deg,
         #606dbc,
@@ -77,6 +78,7 @@ p{
     padding: 5px;
     position: relative;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 
 .upgrade:hover .level-info{
@@ -107,4 +109,24 @@ p{
     padding: 1px;
     text-align: center;
     display: none; 
+}
+
+.statistics{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 450px;
+    padding: 30px;
+    border: 2px white solid;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+
+}
+
+.text{
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 22px;
 }

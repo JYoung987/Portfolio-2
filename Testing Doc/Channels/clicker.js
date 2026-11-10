@@ -1,40 +1,91 @@
-// ARRAY FOR SETTING UPGRADE VALUES
-/* const UPGRADES = [
-    {name: "Clicker", startingCost: 10, level: 0, upgradeAmount: 1, costMultiplier: 1.15, icon: "../Images/PointerIcon.png"},
-]
-const upgradeContainer = document.getElementById("UpgradeBox");
-*/
+/* const UpgradeData = localStorage.getItem("upgradeData");
 
-let coin = document.querySelector('.coin-cost');
+function SaveData(){
+    const UpgradeSave = localStorage.getItem(UpgradeData)
+    localStorage.setItem("UPGRADES", JSON.stringify(UPGRADES));
+} */
+
+// ARRAY FOR SETTING UPGRADE VALUES
+const UPGRADES = [
+    {name: "Clicker", type: "Clicker", cost: 10, level: 0, upgradeAmount: 1000000, costMultiplier: 1.12, icon: "../Images/Clicker/PointerIcon.png"},
+    {name: "Auto Clicker",  type: "Auto", cost: 25, level: 0, upgradeAmount: 99999999, costMultiplier: 1.05, icon: "../Images/Clicker/Gear.png"},
+    {name: "Baker", type: "Auto", cost: 100, level: 0, upgradeAmount: 5, costMultiplier: 1.02, icon:"../Images/Clicker/Baker.png"}
+]
+
+const upgradeContainer = document.getElementById("UpgradeBox");
+
+let coin = document.querySelector(".coin-cost");
 let parsedCoin = parseFloat(coin.innerHTML);
 
-let clickerCost = document.querySelector('.clicker-cost');
-let parsedClickerCost = parseFloat(clickerCost.innerHTML);
-
-let clickerLevel = document.querySelector('.clicker-level');
-let clickerIncrease = document.querySelector('.clicker-increase');
-let parsedClickerIncrease = parseFloat(clickerIncrease.innerHTML);
-
 let cpc = 1;
+let cps = 0;
+let autoClick = false;
+
+function renderUpgrades() {
+    upgradeContainer.innerHTML = "";
+
+    UPGRADES.forEach((upgrade, index) => {
+        upgradeContainer.innerHTML += `
+            <div class="upgrade" onclick="buyUpgrade(${index})">
+                <div class="left-section">
+                    <img src="${upgrade.icon}" class="pointer-icon">
+                </div>
+
+                <div class="center-section">
+                    <h4>${upgrade.name}</h4>
+
+                    <div class="cost-info">
+                        <p>Cost: <span>${Math.floor(upgrade.cost)}</span></p>
+                    </div>
+                </div>
+                <div class="right-section">
+                    Level ${upgrade.level}
+                </div>
+
+                <div class="level-info">
+                    <p>+${upgrade.upgradeAmount}<br>${upgrade.type === "Auto" ? "Per Second" : "Per Click"}</p>
+                </div>
+            </div>
+        `;
+    });
+}
+
+renderUpgrades();
 
 function incrementCoins() {
-    parsedCoin += cpc;
-    coin.innerHTML = parsedCoin;
+    coin.innerHTML = Math.floor(parseFloat(parsedCoin += cpc));
 }
 
-function buyClicker() {
-    if (parsedCoin >= parsedClickerCost) {
-        parsedCoin -= parsedClickerCost;
-        coin.innerHTML = parsedCoin;
+function buyUpgrade(index) {
+    const upgrade = UPGRADES[index];
 
-        clickerLevel.innerHTML = parseInt(clickerLevel.innerHTML) + 1;
+    if (parsedCoin >= upgrade.cost) {
 
-        parsedClickerIncrease *= 1.2;
-        clickerIncrease.innerHTML = parsedClickerIncrease;
+        parsedCoin -= upgrade.cost;
+        coin.innerHTML = Math.floor(parsedCoin);
+        upgrade.level++;
 
-        parsedClickerCost *= 1.15;
-        clickerCost.innerHTML = Math.round(parsedClickerCost);
+        if (upgrade.type === "Clicker"){
 
-        cpc = parsedClickerIncrease;
+            cpc += upgrade.upgradeAmount;
+        }
+
+        if (upgrade.type === "Auto"){
+
+            cps += upgrade.upgradeAmount;
+        }
+
+        upgrade.cost *= upgrade.costMultiplier;
+
+        renderUpgrades();
+
     }
 }
+
+const TICK = 100;
+
+setInterval(() => {
+    if (cps === 0) return;
+    parsedCoin += cps * (TICK / 1000);
+    coin.innerHTML = Math.floor(parsedCoin);
+}, TICK);
