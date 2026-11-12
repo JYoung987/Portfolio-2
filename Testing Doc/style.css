@@ -294,6 +294,10 @@ body {
     cursor: pointer;
 }
 
+.MainMenubtn:hover{
+    transform: scale(1.15);
+}
+
 .Startbtn {
     position: fixed;
     right: 23%;
@@ -305,6 +309,9 @@ body {
     cursor: pointer;
 }
 
+.Startbtn:hover{
+    transform: scale(1.15);
+}
 
 /* ==================================================
    9. LEFT ARROW ANIMATION
@@ -387,11 +394,18 @@ body {
     animation: bAnim-l 2s ease-in-out 0.1s infinite;
 }
 
+.l-arrow-btn:hover{
+    animation-play-state: paused;
+}
+
 .r-arrow-btn {
     right: 3%;
     animation: bAnim-r 2s ease-in-out 0.1s infinite;
 }
 
+.r-arrow-btn:hover{
+    animation-play-state: paused;
+}
 
 /* ==================================================
    11. DISC CHANNEL

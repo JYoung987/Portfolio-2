@@ -7,19 +7,22 @@ function SaveData(){
 
 // ARRAY FOR SETTING UPGRADE VALUES
 const UPGRADES = [
-    {name: "Clicker", type: "Clicker", cost: 10, level: 0, upgradeAmount: 1000000, costMultiplier: 1.12, icon: "../Images/Clicker/PointerIcon.png"},
-    {name: "Auto Clicker",  type: "Auto", cost: 25, level: 0, upgradeAmount: 99999999, costMultiplier: 1.05, icon: "../Images/Clicker/Gear.png"},
-    {name: "Baker", type: "Auto", cost: 100, level: 0, upgradeAmount: 5, costMultiplier: 1.02, icon:"../Images/Clicker/Baker.png"}
+    {name: "Auto Clicker",  type: "Auto", cost: 10, level: 0, upgradeAmount: 0.5, costMultiplier: 1.2, icon: "../Images/Clicker/Gear.png"},
+    {name: "Clicker", type: "Clicker", cost: 50, level: 0, upgradeAmount: 1, costMultiplier: 2, icon: "../Images/Clicker/PointerIcon.png"},
+    {name: "Baker", type: "Auto", cost: 250, level: 0, upgradeAmount: 5, costMultiplier: 1.5, icon:"../Images/Clicker/Baker.png"},
 ]
 
 const upgradeContainer = document.getElementById("UpgradeBox");
+const clickStats = document.getElementById("cpcText");
+const autoStats = document.getElementById("cpsText");
 
 let coin = document.querySelector(".coin-cost");
 let parsedCoin = parseFloat(coin.innerHTML);
 
 let cpc = 1;
 let cps = 0;
-let autoClick = false;
+let critChance = 1;
+let critValue = 2;
 
 function renderUpgrades() {
     upgradeContainer.innerHTML = "";
@@ -78,7 +81,6 @@ function buyUpgrade(index) {
         upgrade.cost *= upgrade.costMultiplier;
 
         renderUpgrades();
-
     }
 }
 

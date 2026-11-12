@@ -5,6 +5,7 @@ body{
     padding: 0;
     user-select: none;
     position: relative;
+    font-family: roboto;
     background: repeating-linear-gradient(
         45deg,
         #606dbc,
@@ -113,14 +114,14 @@ p{
 
 .statistics{
     position: absolute;
-    bottom: 0;
-    left: 50%;
-    width: 450px;
+    bottom: -250px;
+    left: 150px;
+    width: 250px;
     padding: 30px;
-    border: 2px white solid;
+    background-color: rgb(114, 69, 27);
+    border: 3px black solid;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
-
 }
 
 .text{
