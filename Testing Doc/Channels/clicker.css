@@ -20,6 +20,7 @@ p{
     color: white;
 }
 .main{
+    margin-top: 10%;
     display: flex;
     align-items: center;
     gap: 150px;
@@ -72,7 +73,7 @@ p{
     align-items: center;
     justify-content: space-between;
     width: 330px;
-    height: 60px;
+    height: 75px;
     border: solid 3px rgb(2, 2, 2);
     background: rgb(114, 69, 27);
     border-radius:5px;
@@ -80,6 +81,7 @@ p{
     position: relative;
     cursor: pointer;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .upgrade:hover .level-info{
@@ -93,6 +95,11 @@ p{
 .coin-icon{
     width: 20px;
     height: 20px;
+}
+
+.coin-count{
+    position: relative;
+    top: 5%;
 }
 
 .cost-info{
@@ -113,15 +120,19 @@ p{
 }
 
 .statistics{
-    position: absolute;
-    bottom: -250px;
-    left: 150px;
-    width: 250px;
-    padding: 30px;
+    width: 300px;
+    height: 75px;
+    margin-top: 10px;
+    padding: 15px;
     background-color: rgb(114, 69, 27);
     border: 3px black solid;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    text-align: center;
+}
+
+.statistics p{
+    font-size: medium;
 }
 
 .text{
@@ -130,4 +141,24 @@ p{
     justify-content: center;
     font-weight: bold;
     font-size: 22px;
+}
+
+.homebtn{
+    cursor: pointer;
+    position: relative;
+    top: 2%;
+    width: 325px;
+    height: 50px;
+    background-color: rgb(114, 69, 27);
+    border: 3px solid;
+    border-radius: 10px;
+    border-color:black;
+    text-align: center;
+}
+
+.homebtn h2{
+    color: white;
+    margin: 0%;
+    font-size: large;
+    font-weight: 600;
 }

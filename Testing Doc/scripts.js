@@ -6,7 +6,7 @@ const CHANNELS = [
   { id: "github", subtitle: "Github Portfolio", channelId: "about.html", media: {type: "image", src:"Images/github.png"} },
   { id: "cv", subtitle: "My CV", channelId: "cv.html", media: {type: "image", src: "/Images/CV-Profile.png"} },
   { id: "youtube", subtitle: "Videos & demos", channelId: "videos.html", media: {type: "video", src:"Media/youtube.mp4"} },
-  { id: "clicker", subtitle: "Clicker Game", channelId: "clicker.html", media: null }, 
+  { id: "clicker", subtitle: "Clicker Game", channelId: "clicker.html", media: {type: "image", src: "Images/Doughnut-icon.png"} }, 
 ];
 
 const channelsContainer = document.getElementById("channels");
@@ -20,6 +20,7 @@ CHANNELS.forEach(channel => {
     tile.style.backgroundImage = `url("${channel.media.src}")`;
     tile.style.backgroundSize = "cover";
     tile.style.backgroundPosition = "center";
+    Image.draggable = false;
   }
 
   if (channel.media?.type === "video") {
@@ -30,6 +31,7 @@ CHANNELS.forEach(channel => {
     video.muted = true;
     video.disablePictureInPicture = true;
     video.playsInline = true;
+    video.draggable = false;
     video.className = "channel-video-bg";
     tile.appendChild(video);
   }
