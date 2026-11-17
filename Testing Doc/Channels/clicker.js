@@ -1,14 +1,11 @@
-// ARRAY FOR SETTING UPGRADE VALUES
+// ARRAY FOR SETTING UPGRADE VALUES //
 const UPGRADES = [
     {name: "Auto Clicker",  type: "Auto", cost: 10, level: 0, MaxLevel: 100, upgradeAmount: 0.5, costMultiplier: 1.2, icon: "../Images/Clicker/Gear.png"},
     {name: "Clicker", type: "Clicker", cost: 50, level: 0, MaxLevel: 100, upgradeAmount: 1, costMultiplier: 2, icon: "../Images/Clicker/PointerIcon.png"},
     {name: "Baker", type: "Auto", cost: 250, level: 0, MaxLevel: 100, upgradeAmount: 5, costMultiplier: 1.5, icon:"../Images/Clicker/Baker.png"},
-    {name: "Blackjack Table", type: "Unlock", cost: 1000, level: 0, MaxLevel: 1, upgradeAmount: 0, costMultiplier: 1, icon:"../Images/Clicker/Blackjack.png"},
-    {name: "Slot Machine", type: "Unlock", cost: 10000, level: 0, MaxLevel: 1, upgradeAmount: 0, costMultiplier: 1, icon: "../Images/Clicker/Slot-machine-icon.png"},
 ]
 
 const upgradeContainer = document.getElementById("UpgradeBox");
-const blackjackContainer = document.getElementById("blackjackbtn");
 let clickStats = document.getElementById("cpcText");
 let autoStats = document.getElementById("cpsText");
 
@@ -24,7 +21,6 @@ function renderUpgrades() {
     upgradeContainer.innerHTML = "";
 
     UPGRADES.forEach((upgrade, index) => {
-        if (upgrade.type === "Unlock" && upgrade.level >= upgrade.MaxLevel) return;
         upgradeContainer.innerHTML += `
             <div class="upgrade" onclick="buyUpgrade(${index})">
                 <div class="left-section">
@@ -51,9 +47,6 @@ function renderUpgrades() {
 }
 
 function getLevelInfo(upgrade) {
-    if (upgrade.type === "Unlock") {
-        return `Unlocks<br>${upgrade.name}`;
-    }
     if (upgrade.type === "Auto") {
         return `+${upgrade.upgradeAmount}<br>Per Second`;
     }
@@ -72,20 +65,6 @@ function incrementCoins() {
     saveGame();
 }
 
-function applyUnlocks() {
-    const blackjack = UPGRADES.find(u => u.name === "Blackjack Table");
-
-    if (blackjack.level >= blackjack.MaxLevel) {
-        blackjackContainer.innerHTML = `
-            <a href="blackjack.html">
-                <button class="Homebtn">
-                    <h2>Enter Blackjack Table</h2>
-                </button>
-            </a>
-        `;
-    }
-}
-
 function buyUpgrade(index) 
 {
     const upgrade = UPGRADES[index];
@@ -93,7 +72,6 @@ function buyUpgrade(index)
     {
         if (parsedCoin >= upgrade.cost) 
         {
-
             parsedCoin -= upgrade.cost;
             coin.innerHTML = Math.floor(parsedCoin);
             upgrade.level++;
@@ -107,8 +85,6 @@ function buyUpgrade(index)
 
                 cps += upgrade.upgradeAmount;
             }
-
-            applyUnlocks();
 
             upgrade.cost *= upgrade.costMultiplier;
 
@@ -172,4 +148,3 @@ loadGame();
 coin.innerHTML = Math.floor(parsedCoin);
 renderUpgrades();
 updateStats(); 
-applyUnlocks();

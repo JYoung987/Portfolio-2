@@ -1,0 +1,9 @@
+#Games{
+    position: fixed;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    left: 50%;
+}
+.gameLogo{
+    border: 35px;
+}

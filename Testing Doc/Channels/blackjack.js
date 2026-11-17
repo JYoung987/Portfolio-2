@@ -1,4 +1,3 @@
-
 let dealerSum = 0;
 let yourSum = 0;
 
@@ -10,7 +9,9 @@ let deck;
 
 let canHit = true;
 
-window.onload = function() {
+window.onload = newGame();
+
+function newGame() {
     buildDeck();
     shuffleDeck();
     startGame();
@@ -101,7 +102,7 @@ function stay() {
     else if (dealerSum > 21) {
         message = "You win!";
     }
-    //both you and dealer <= 21
+    
     else if (yourSum == dealerSum) {
         message = "Tie!";
     }

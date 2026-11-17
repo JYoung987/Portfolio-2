@@ -7,6 +7,7 @@ const CHANNELS = [
   { id: "cv", subtitle: "My CV", channelId: "cv.html", media: {type: "image", src: "/Images/CV-Profile.png"} },
   { id: "youtube", subtitle: "Videos & demos", channelId: "videos.html", media: {type: "video", src:"Media/youtube.mp4"} },
   { id: "clicker", subtitle: "Clicker Game", channelId: "clicker.html", media: {type: "image", src: "Images/Doughnut-icon.png"} }, 
+  { id: "blackjack", subtitle: "Blackjack Game", channelId: "blackjack.html", media: {type: "image", src: "Images/Blackjackicon.png"} },
 ];
 
 const channelsContainer = document.getElementById("channels");
