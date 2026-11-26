@@ -89,7 +89,7 @@ channels.forEach(tile => {
     hoverSound.play();
 
     tooltip.textContent = data.subtitle;
-    tooltip.classList.add("visible");
+    tooltip.style.opacity = "1";
   });
 
   tile.addEventListener("mousemove", e => {
@@ -97,7 +97,7 @@ channels.forEach(tile => {
   });
 
   tile.addEventListener("mouseleave", () => {
-    tooltip.classList.remove("visible");  
+    tooltip.style.opacity = "0"; 
   });
 });
 

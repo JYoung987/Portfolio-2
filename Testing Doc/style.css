@@ -139,23 +139,15 @@ body {
     top: 0;
     left: 0;
     z-index: 1000;
-
     padding: 0.4rem 0.9rem;
-
     background: white;
     border: 2px solid #37bef0;
     border-radius: 10px;
     color: #37bef0;
-
     font-weight: bold;
-    white-space: nowrap;
-
     pointer-events: none;
-    transition: opacity 0.15s ease;
-}
-
-.tooltip.visible {
-    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+    opacity: 0;
 }
 
 
@@ -449,6 +441,19 @@ body {
 .disc-item-4 {
     transform: translate(225%, -50%) scale(0.6);
     z-index: 1;
+}
+
+.startNoti{
+    position: fixed;
+    bottom: 300px;
+    justify-content: center;
+    z-index: 1000;
+
+    height: 50px;
+    width: 200px;
+    padding: 1rem;
+    font-weight: bold;
+    transition: opacity 0.2s ease-in-out;
 }
 
 /* ==================================================
